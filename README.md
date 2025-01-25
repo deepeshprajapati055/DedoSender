@@ -9,3 +9,7 @@ Responsive Layout: The app is optimized for all screen sizes, ensuring a smooth 
 # Technologies Used
 Backend: Spring Boot <br>
 Frontend: HTML, CSS, Thymeleaf for rendering dynamic content
+# 
+![Image](https://github.com/user-attachments/assets/c1945d3c-7b59-4e49-a23c-6bf9c99d005e)
+# 
+![Image](https://github.com/user-attachments/assets/a47aed1a-40e1-4893-96ea-ef2fc82c60ff)
