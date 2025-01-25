@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Dedo Sender-HomePage</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #2E3944, #748D92); /* #AFDDE5 */
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            background: #8697C4;
+            padding: 40px 50px;
+            border-radius: 15px;
+            box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border: none;
+            outline: none;
+            max-width: 50%;
+        }
+
+        .title {
+            font-size: 3em;
+            color: #000;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 8px;
+            background-color: #024950;
+            color: #fff;
+            font-size: 1.1em;
+            outline: none;
+        }
+        ::placeholder {
+            color: #000;
+        }
+
+        .input-field:focus {
+            background-color: #124E66;
+            box-shadow: 0 0 10px #124E66;
+        }
+
+        .file-upload {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-upload {
+            display: block;
+            background-color: #024950;
+            color: #000;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .custom-file-upload:hover {
+            background-color: #124E66;
+            box-shadow: 0 0 10px #124E66;
+        }
+
+        .file-name {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #000;
+        }
+
+        .submit-btn {
+            background-color: #024950;
+            color: #000;
+            padding: 15px 25px;
+            font-size: 1.3em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 25px;
+        }
+
+        .submit-btn:hover {
+            background-color: #124E66;
+            box-shadow: 0 0 10px #124E66;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 20px; }
+            .title { font-size: 2.5em; }
+            .input-field, .submit-btn { font-size: 1em; }
+        }
+        
+        span {
+            color: #2E3944;
+            text-decoration: underline;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <h1 class="title"><i class="fa-solid fa-envelope"></i> Dedo<span>Sender</span></h1>
+        <form action="/mail" method="post" class="mail-form" enctype="multipart/form-data">
+            <input type="text" name="to" placeholder="Recipient Emails (comma-separated)" class="input-field" required />
+            <input type="text" name="subject" placeholder="Subject" class="input-field" required />
+            <textarea name="msg" placeholder="Message (Supports HTML & Links)" class="input-field" required></textarea>
+            <div class="file-upload">
+                <label for="file" class="custom-file-upload">
+                    <i class="fa-solid fa-arrow-up-from-bracket"></i> Choose File
+                </label>
+                <input type="file" id="file" name="file" />
+                <span class="file-name" id="file-name">No file chosen</span>
+            </div>
+            <button type="submit" class="submit-btn"><i class="fa-solid fa-paper-plane"></i> Send Mail</button>
+        </form>
+    </div>
+    
+    <script>
+        const fileInput = document.getElementById('file');
+        const fileNameDisplay = document.getElementById('file-name');
+
+        fileInput.addEventListener('change', () => {
+            const fileName = fileInput.files[0] ? fileInput.files[0].name : "No file chosen";
+            fileNameDisplay.textContent = fileName;
+        });
+    </script>
+    
+</body>
+</html>
